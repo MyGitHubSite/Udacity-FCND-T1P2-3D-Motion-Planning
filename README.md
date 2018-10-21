@@ -4,12 +4,12 @@
 
 ### Writeup / README
 ---
-### Explain the Starter Code
+### A. Explain the Starter Code
 --
 #### 1. Explain the functionality of what's provided in `motion_planning.py` and `planning_utils.py`
 These scripts contain a basic planning implementation that includes...
 
-### Implementing Your Path Planning Algorithm
+### B. Implementing Your Path Planning Algorithm
 --
 #### 1. Set your global home position
 
@@ -119,6 +119,7 @@ The prune path function was called after a path was found using A* grid search i
       # Convert path to waypoints  
       waypoints = [[p[0] + north_offset, p[1] + east_offset, TARGET_ALTITUDE, 0] for p in pruned_path]  
 ---
-### Execute the flight
+### C. Execute the flight
+
 #### 1. Does it work?
 It works!
