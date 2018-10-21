@@ -1,9 +1,8 @@
 ## Project: 3D Motion Planning
-![Quad Image](./misc/enroute.png)
----
-
 ### Writeup / README
----
+
+![Quad Image](./misc/enroute.png)
+
 ### A. Explain the Starter Code
 ---
 #### 1. Explain the functionality of what's provided in `motion_planning.py` and `planning_utils.py`
