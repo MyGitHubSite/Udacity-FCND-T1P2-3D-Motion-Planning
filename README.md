@@ -61,9 +61,8 @@ A geodetic goal was set using coordinates close to the start position.  This goa
 
 
 #### 5. Modify A* to include diagonal motion (or replace A* altogether)
-Minimal requirement here is to modify the code in planning_utils() to update the A* implementation to include diagonal motions on the grid that have a cost of sqrt(2), but more creative solutions are welcome. Explain the code you used to accomplish this step.
 
-I modified the 
+I modified the planning_utils.py file to include diagonal motion that could be used within the A* grid search function.
 
 Within planning_utils.py I added the following block of code to the *Action* class:
 
@@ -74,8 +73,6 @@ Within planning_utils.py I added the following block of code to the *Action* cla
 
 Within planning_utils.py I added the following block of code to the *valid_actions* functions:
 
-def valid_actions
-
     if (x - 1 < 0 or y - 1 < 0) or grid[x - 1, y - 1] == 1:
         valid_actions.remove(Action.NORTHWEST)
     if (x - 1 < 0 or y + 1 < 0) or grid[x - 1, y + 1] == 1:
@@ -84,8 +81,6 @@ def valid_actions
         valid_actions.remove(Action.SOUTHWEST)
     if (x + 1 < 0 or y + 1 < 0) or grid[x + 1, y + 1] == 1:
         valid_actions.remove(Action.SOUTHEAST)
-
-
 
 #### 6. Cull waypoints 
 For this step you can use a collinearity test or ray tracing method like Bresenham. The idea is simply to prune your path of unnecessary waypoints. Explain the code you used to accomplish this step.
