@@ -51,7 +51,7 @@ I grabbed the drone's global position and then used that relative to the global 
 
 #### 3. Set grid start position from local position
 
-To figure out the start location I read in the data file and calculated the search grid as well as the north and east offsets.  The grid start was set equal to the local poistion minus the offsets.  
+To figure out the start location I read in the data file and calculated the search grid as well as the north and east offsets.  The grid start was set equal to the local position minus the offsets.  
 
     # Read in obstacle map
     data = np.loadtxt('colliders.csv', delimiter=',', dtype='Float64', skiprows=2)
