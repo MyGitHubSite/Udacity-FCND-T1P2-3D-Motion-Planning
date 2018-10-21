@@ -35,18 +35,29 @@ Here students should read the first line of the csv file, extract lat0 and lon0 
 
 I read in the first line of the csv file, extracted the latitude and longitude, and used them to set the home position with altitude = 0.
 
+Code:
     with open('colliders.csv', 'r') as f:
         reader = csv.reader(f, delimiter=',')
         coords = next(reader)
 
-    lat0 = float(coords[0][5:]) = -122.3974533
-    lon0 = float(coords[1][6:]) =   37.7924804
+    lat0 = float(coords[0][5:])               # -122.3974533
+    lon0 = float(coords[1][6:]) =             #   37.7924804
 
-    self.set_home_position(lon0, lat0, 0)        # longitude, latitude, altitude
+    self.set_home_position(lon0, lat0, 0)     # longitude, latitude, altitude
 
 
 #### 2. Set your current local position
 Here as long as you successfully determine your local position relative to global home you'll be all set. Explain briefly how you accomplished this in your code.
+
+I grabbed the drone's global position and then used that relative to the global home position to calculate the local position.
+
+Code:
+    # Get the drone's global position   
+    global_position = [self._longitude, self._latitude, self._altitude]
+
+    # Convert to current local position using global_to_local()
+    curr_local_position = global_to_local(global_position, self.global_home)
+
 
 #### 3. Set grid start position from local position
 This is another step in adding flexibility to the start location. As long as it works you're good to go!
