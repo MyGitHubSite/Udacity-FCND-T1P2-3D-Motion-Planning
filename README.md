@@ -7,34 +7,22 @@
 ### A. Explain the Starter Code
 ---
 #### 1. Explain the functionality of what's provided in `motion_planning.py` and `planning_utils.py`
-These scripts contain a basic planning implementation that includes...
 
-planning_utils.py
+The planner (planning_utils.py) is responsible for:
 
-1) set up a discretized grid search space
-2) defines valid actions
-3) assign costs for each action
-4) estimates a heuristic
-5) use grid search to find waypoints, prune
+    1) setting up a discretized grid search space.
+    2) defining valid actions in the search space.
+    3) assigning costs for each action.
+    4) estimating a heuristic for A* search.
+    5) using A* grid search to find waypoints.
 
-define start and goal
+The motion_planning.py file is responsible for interfacing between the drone and the planner (planning_utils.py):
 
-
-def create_grid(data, drone_altitude, safety_distance):
-class Action(Enum):
-def valid_actions(grid, current_node):
-def a_star(grid, h, start, goal):
-def heuristic(position, goal_position):
-
-motion_planning.py
-
-class States(Enum):
-class MotionPlanning(Drone):
-    def plan_path(self):
-    def start(self): 
-    
-connects to simulator
-
+    1) connecting to the simulator.
+    2) reading in the map (or set of points) and passing the information to the planner.
+    3) defining the starting point and goal.
+    4) sending drone information (position) to the planner.
+    5) Getting the plan (waypoints) back from the planner and passing it to the drone.
 
 ### B. Implementing Your Path Planning Algorithm
 ---
