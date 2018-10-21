@@ -9,6 +9,33 @@
 #### 1. Explain the functionality of what's provided in `motion_planning.py` and `planning_utils.py`
 These scripts contain a basic planning implementation that includes...
 
+planning_utils.py
+
+1) set up a discretized grid search space
+2) defines valid actions
+3) assign costs for each action
+4) estimates a heuristic
+5) use grid search to find waypoints, prune
+
+define start and goal
+
+
+def create_grid(data, drone_altitude, safety_distance):
+class Action(Enum):
+def valid_actions(grid, current_node):
+def a_star(grid, h, start, goal):
+def heuristic(position, goal_position):
+
+motion_planning.py
+
+class States(Enum):
+class MotionPlanning(Drone):
+    def plan_path(self):
+    def start(self): 
+    
+connects to simulator
+
+
 ### B. Implementing Your Path Planning Algorithm
 ---
 #### 1. Set your global home position
