@@ -99,7 +99,7 @@ Within planning_utils.py I added the following block of code to the *valid_actio
 
 #### 6. Cull waypoints 
 
-To cull waypoints which fell in a straight line or very close to straight line I created three functions in the planning_utils.py file.  The points in a path were put into a 3x3 matrix and then the determinant was calculated using the colinearity check.  If the determinant fell below a threshold (epsilon) the path was deemed to be a line and the middle point in the path was disgarded.
+To cull waypoints which fell in a straight line or very close to straight line I created three functions in the planning_utils.py file.  The points in a path were put into a 3x3 matrix and then the determinant was calculated using the collinearity check.  If the determinant fell below a threshold (epsilon) the path was deemed to be a line and the middle point in the path was disgarded.
 
     def point(p):  
         return np.array([p[0], p[1], 1.]).reshape(1, -1)  
