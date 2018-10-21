@@ -83,7 +83,41 @@ Within planning_utils.py I added the following block of code to the *valid_actio
         valid_actions.remove(Action.SOUTHEAST)
 
 #### 6. Cull waypoints 
-For this step you can use a collinearity test or ray tracing method like Bresenham. The idea is simply to prune your path of unnecessary waypoints. Explain the code you used to accomplish this step.
+
+To cull waypoints which fell in a straight line or very close to straight line I created three functions in the planning_utils.py file.  The points in a path were put into a 3x3 matrix and then the determinant was calculated using the colinearity check.  If the determinant fell below a threshold (epsilon) the path was deemed to be a line and the middle point in the path was disgarded.
+
+    def point(p):  
+        return np.array([p[0], p[1], 1.]).reshape(1, -1)  
+
+    def collinearity_check(p1, p2, p3, epsilon=1e-6):  
+        m = np.concatenate((p1, p2, p3), 0)  
+        det = np.linalg.det(m)                    # calculate the determinant  
+        return abs(det) < epsilon  
+
+    def prune_path(path):  
+        pruned_path = [p for p in path]  
+
+        i = 0  
+        while i < len(pruned_path) - 2:           # check to make sure there are 3 points in a path  
+            p1 = point(pruned_path[i])  
+            p2 = point(pruned_path[i+1])  
+            p3 = point(pruned_path[i+2])  
+
+            if collinearity_check(p1, p2, p3):  
+                pruned_path.remove(pruned_path[i+1])  
+            else:  
+                i += 1  
+        return pruned_path  
+        
+The prune path function was called after a path was found using A* grid search in the motion_planning.py file.  The waypoints were calculated from the pruned path.  
+
+      path, cost = a_star(grid, heuristic, grid_start, grid_goal)  
+
+      # Prune path to minimize number of waypoints  
+      pruned_path = prune_path(path)  
+      
+      # Convert path to waypoints  
+      waypoints = [[p[0] + north_offset, p[1] + east_offset, TARGET_ALTITUDE, 0] for p in pruned_path]  
 
 ### Execute the flight
 #### 1. Does it work?
