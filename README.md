@@ -5,12 +5,12 @@
 ### Writeup / README
 ---
 ### A. Explain the Starter Code
---
+---
 #### 1. Explain the functionality of what's provided in `motion_planning.py` and `planning_utils.py`
 These scripts contain a basic planning implementation that includes...
 
 ### B. Implementing Your Path Planning Algorithm
---
+---
 #### 1. Set your global home position
 
 I read in the first line of the csv file, extracted the latitude and longitude, and used them to set the home position with altitude = 0.  
