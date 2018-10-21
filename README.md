@@ -22,7 +22,7 @@ The motion_planning.py file is responsible for interfacing between the drone and
     2) reading in the map (or set of points) and passing the information to the planner.
     3) defining the starting point and goal.
     4) sending drone information (position) to the planner.
-    5) Getting the plan (waypoints) back from the planner and passing it to the drone.
+    5) getting the plan (waypoints) back from the planner and passing it to the drone.
 
 ### B. Implementing Your Path Planning Algorithm
 ---
