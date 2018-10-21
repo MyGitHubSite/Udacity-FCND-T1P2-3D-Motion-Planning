@@ -1,7 +1,8 @@
 ## Project: 3D Motion Planning
-### Writeup / README
 
 ![Quad Image](./misc/enroute.png)
+
+### Writeup / README
 
 ### A. Explain the Starter Code
 ---
